@@ -1,7 +1,6 @@
 import { makeAutoObservable } from 'mobx';
-import AuthService from '../services/AuthService';
 import axios from 'axios';
-import { API_URL } from '../services/index';
+import { API_URL } from '../services';
 
 export default class Store {
   user = {};
@@ -25,29 +24,31 @@ export default class Store {
 
   async login(email, password) {
     try {
+      /*
       const res = await AuthService.login(email, password);
 
-      localStorage.setItem('accessToken', res.data.accessToken);
-      localStorage.setItem('refreshToken', res.data.refreshToken);
+      localStorage.setItem("accessToken", res.data.accessToken);
+      localStorage.setItem("refreshToken", res.data.refreshToken);
       this.setAdmin(res.data.isAdmin);
-      console.log('store', this.isAdmin);
+      console.log("store", this.isAdmin);
       this.setAuth(true);
-      this.setUser(res.data.user);
-    } catch (e) {
+      this.setUser(res.data.user);*/
+    } catch (e: any) {
       console.log(e.response?.data);
     }
   }
 
   async registration(email, password) {
     try {
+      /*
       const res = await AuthService.registration(email, password);
 
-      localStorage.setItem('accessToken', res.data.accessToken);
-      localStorage.setItem('refreshToken', res.data.refreshToken);
+      localStorage.setItem("accessToken", res.data.accessToken);
+      localStorage.setItem("refreshToken", res.data.refreshToken);
       this.setAdmin(res.data.isAdmin);
       this.setAuth(true);
-      this.setUser(res.data.user);
-    } catch (e) {
+      this.setUser(res.data.user);*/
+    } catch (e: any) {
       console.log(e.response?.data);
     }
   }
@@ -64,6 +65,7 @@ export default class Store {
 
   async checkAuth() {
     try {
+      /*
       const res = await axios.post(`${API_URL}user/auth/refresh`, { refreshToken: localStorage.getItem('refreshToken') });
       localStorage.setItem('accessToken', res.data.accessToken);
       localStorage.setItem('refreshToken', res.data.refreshToken);
@@ -72,7 +74,7 @@ export default class Store {
 
       this.setAuth(true);
       this.setUser(res.data.user);
-      console.log(this.user.email);
+      console.log(this.user.email);*/
     } catch (e) {
       console.log('REFRESH ERROR');
     }
