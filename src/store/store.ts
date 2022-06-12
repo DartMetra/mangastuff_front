@@ -2,81 +2,113 @@ import { makeAutoObservable } from 'mobx';
 import axios from 'axios';
 import { API_URL } from '../services';
 
+import { getToken, getUser, googleLogin, loginEmail, registerEmail } from '../services/firebase.service';
+
 export default class Store {
-  user = {};
   isAuth = false;
-  isAdmin = false;
+  user: any = {};
 
   constructor() {
+    try {
+      const saved = localStorage.getItem('storage');
+      if (!saved) {
+        throw new Error('Default values');
+      }
+      const { isAuth, user } = JSON.parse(saved);
+      this.isAuth = isAuth;
+      this.user = user;
+    } catch (error) {
+      this.isAuth = false;
+      this.user = {};
+    }
     makeAutoObservable(this);
+    console.log('NEW STORE WTF');
+  }
+
+  setUser(data) {
+    this.user = data;
   }
 
   setAuth(bool) {
     this.isAuth = bool;
   }
-  setAdmin(bool) {
-    this.isAdmin = bool;
+
+  save() {
+    localStorage.setItem('storage', JSON.stringify({ isAuth: this.isAuth, user: this.user }));
   }
 
-  setUser(user) {
-    this.user = user;
-  }
-
-  async login(email, password) {
+  async loginGoogle() {
+    console.log('LOGGOOGLE');
     try {
-      /*
-      const res = await AuthService.login(email, password);
+      const token = await googleLogin();
 
-      localStorage.setItem("accessToken", res.data.accessToken);
-      localStorage.setItem("refreshToken", res.data.refreshToken);
-      this.setAdmin(res.data.isAdmin);
-      console.log("store", this.isAdmin);
+      localStorage.setItem('token', token);
+      console.log('AUTH GOOGLE');
       this.setAuth(true);
-      this.setUser(res.data.user);*/
+      this.setUser(await getUser());
+      console.log('USERAUTH', this.user, this.isAuth);
+      this.save();
     } catch (e: any) {
-      console.log(e.response?.data);
+      console.log('GOOGLE ERROR');
+      console.log(e);
     }
   }
 
-  async registration(email, password) {
+  async loginEmail(email, pass) {
+    console.log('LOGEMAIL');
     try {
-      /*
-      const res = await AuthService.registration(email, password);
+      const token = await loginEmail(email, pass);
 
-      localStorage.setItem("accessToken", res.data.accessToken);
-      localStorage.setItem("refreshToken", res.data.refreshToken);
-      this.setAdmin(res.data.isAdmin);
+      localStorage.setItem('token', token);
+
       this.setAuth(true);
-      this.setUser(res.data.user);*/
+      this.setUser(await getUser());
+      this.save();
     } catch (e: any) {
-      console.log(e.response?.data);
+      console.log(e);
+    }
+  }
+
+  async registerEmail(email, pass) {
+    console.log('REGEMAIL');
+    try {
+      const token = await registerEmail(email, pass);
+
+      localStorage.setItem('token', token);
+
+      this.setAuth(true);
+      this.setUser(await getUser());
+      this.save();
+    } catch (e: any) {
+      console.log(e);
     }
   }
 
   async logout() {
     try {
-      localStorage.removeItem('accessToken');
-      localStorage.removeItem('refreshToken');
-      this.setAdmin(false);
+      console.log('LOGOUT');
+      localStorage.removeItem('token');
+
       this.setAuth(false);
       this.setUser({});
+      this.save();
     } catch (e) {}
   }
 
-  async checkAuth() {
+  async getToken() {
+    console.log('GETTOKEN');
     try {
-      /*
-      const res = await axios.post(`${API_URL}user/auth/refresh`, { refreshToken: localStorage.getItem('refreshToken') });
-      localStorage.setItem('accessToken', res.data.accessToken);
-      localStorage.setItem('refreshToken', res.data.refreshToken);
-      this.setAdmin(res.data.isAdmin);
-      console.log('STORE REF', this.isAdmin);
+      const token = await getToken();
+
+      localStorage.setItem('token', token);
 
       this.setAuth(true);
-      this.setUser(res.data.user);
-      console.log(this.user.email);*/
-    } catch (e) {
-      console.log('REFRESH ERROR');
+      this.setUser(await getUser());
+      this.save();
+    } catch (e: any) {
+      console.log(e);
     }
   }
 }
+
+export const store = new Store();

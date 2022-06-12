@@ -4,10 +4,8 @@ import { BrowserRouter } from 'react-router-dom';
 import { Normalize } from 'styled-normalize';
 
 import App from './App';
-import Store from './store/store';
-import { SApp } from './style';
+import { store } from './store/store';
 
-const store = new Store();
 export const Context = createContext({
   store,
 });

@@ -68,7 +68,7 @@ export function MangaDetailedPage() {
                 <InfoPage description={manga?.description} _id={manga?._id} genres={manga?.genres}></InfoPage>
               </STabPanel>
               <STabPanel>
-                <ChapterPage></ChapterPage>
+                <ChapterPage _id={manga?._id}></ChapterPage>
               </STabPanel>
               <STabPanel>Panel 3</STabPanel>
             </STabs>

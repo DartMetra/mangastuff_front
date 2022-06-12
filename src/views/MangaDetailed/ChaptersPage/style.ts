@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const ChapterWrap = styled.div`
@@ -6,6 +7,7 @@ export const ChapterWrap = styled.div`
   justify-content: center;
 `;
 
-export const Chapter = styled.div`
+export const Chapter = styled(Link)`
+  display: block;
   padding: 5px 8px;
 `;

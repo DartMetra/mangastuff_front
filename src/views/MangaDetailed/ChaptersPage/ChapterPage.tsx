@@ -1,11 +1,24 @@
 import { Chapter, ChapterWrap } from './style';
+import { useState, useEffect } from 'react';
+import { getChaptersByManga } from '../../../services/chapter.service';
 
-export function ChapterPage() {
+export function ChapterPage({ _id }) {
+  const [chapters, setChapters]: any[] = useState([]);
+
+  useEffect(() => {
+    getChaptersByManga(_id).then((res) => {
+      console.log(res.data);
+      setChapters(res.data.docs);
+    });
+  }, []);
+
   return (
     <ChapterWrap>
-      <Chapter>Том 1 Глава 1</Chapter> <Chapter>Том 1 Глава 1</Chapter> <Chapter>Том 1 Глава 1</Chapter> <Chapter>Том 1 Глава 1</Chapter>{' '}
-      <Chapter>Том 1 Глава 1</Chapter> <Chapter>Том 1 Глава 1</Chapter> <Chapter>Том 1 Глава 1</Chapter> <Chapter>Том 1 Глава 1</Chapter>{' '}
-      <Chapter>Том 1 Глава 1</Chapter> <Chapter>Том 1 Глава 1</Chapter>
+      {chapters?.map((e) => {
+        console.log(e);
+
+        return <Chapter to="/adsads">{'Том ' + e.volume + ' Роздел ' + e.chapter}</Chapter>;
+      })}
     </ChapterWrap>
   );
 }

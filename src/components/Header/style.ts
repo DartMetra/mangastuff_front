@@ -39,6 +39,8 @@ export const HeaderAuthContainer = styled.div`
   justify-content: space-around;
 `;
 
-export const HeaderLabel = styled.span`
+export const HeaderLabel = styled(Link)`
   margin-right: 10px;
 `;
+
+export const HeaderProfile = styled.div``;
