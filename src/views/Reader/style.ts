@@ -35,7 +35,10 @@ export const ReaderContainer = styled.div`
   box-sizing: border-box;
 `;
 
-export const Page = styled.img``;
+export const Page = styled.img`
+  //width: ${(props: { size?: number }) => (props.size ? props.size : 60)}%;
+  max-width: 100%;
+`;
 
 export const Next = styled.div`
   width: 70%;
@@ -43,12 +46,24 @@ export const Next = styled.div`
   right: 0;
   cursor: pointer;
   position: fixed;
+  outline: none;
+  &:active {
+    outline: none;
+  }
 `;
 
 export const Prev = styled.div`
+  outline: none;
   width: 30%;
   min-height: 100vh;
   left: 0;
   cursor: pointer;
   position: fixed;
+  &:active {
+    outline: none;
+  }
+`;
+
+export const SizeBtn = styled.button`
+  padding: 5px 12px;
 `;

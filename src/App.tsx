@@ -6,6 +6,7 @@ import { MangaDetailedPage } from './views/MangaDetailed/MangaDetailed';
 import { MainPage } from './views/Main/MainPage';
 import { LoginPage } from './views/Login/LoginPage';
 import ReaderPage from './views/Reader/Reader';
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 
 function App() {
   const { store } = useContext(Context);
