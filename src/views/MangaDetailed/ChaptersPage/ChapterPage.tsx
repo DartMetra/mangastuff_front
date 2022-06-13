@@ -17,7 +17,7 @@ export function ChapterPage({ _id }) {
       {chapters?.map((e) => {
         console.log(e);
 
-        return <Chapter to="/adsads">{'Том ' + e.volume + ' Роздел ' + e.chapter}</Chapter>;
+        return <Chapter to={'/manga/' + _id + '/chapter/c' + e.chapter}>{'Том ' + e.volume + ' Роздел ' + e.chapter}</Chapter>;
       })}
     </ChapterWrap>
   );

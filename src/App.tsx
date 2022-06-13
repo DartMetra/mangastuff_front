@@ -5,6 +5,7 @@ import { Context } from '.';
 import { MangaDetailedPage } from './views/MangaDetailed/MangaDetailed';
 import { MainPage } from './views/Main/MainPage';
 import { LoginPage } from './views/Login/LoginPage';
+import ReaderPage from './views/Reader/Reader';
 
 function App() {
   const { store } = useContext(Context);
@@ -16,6 +17,7 @@ function App() {
         <Route path="/" element={<MainPage></MainPage>}></Route>
         <Route path="/login" element={<LoginPage></LoginPage>}></Route>
         <Route path="/manga/:id" element={<MangaDetailedPage></MangaDetailedPage>}></Route>
+        <Route path="/manga/:id/chapter/c:chapter" element={<ReaderPage></ReaderPage>}></Route>
       </Routes>
     </>
   );

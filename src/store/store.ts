@@ -1,4 +1,4 @@
-import { makeAutoObservable } from 'mobx';
+import { makeAutoObservable, observable } from 'mobx';
 import axios from 'axios';
 import { API_URL } from '../services';
 
@@ -7,8 +7,10 @@ import { getToken, getUser, googleLogin, loginEmail, registerEmail } from '../se
 export default class Store {
   isAuth = false;
   user: any = {};
+  loading = false;
 
   constructor() {
+    makeAutoObservable(this);
     try {
       const saved = localStorage.getItem('storage');
       if (!saved) {
@@ -21,8 +23,13 @@ export default class Store {
       this.isAuth = false;
       this.user = {};
     }
-    makeAutoObservable(this);
+
     console.log('NEW STORE WTF');
+  }
+
+  setLoading(bool: boolean) {
+    console.log('LOADER', bool);
+    this.loading = bool;
   }
 
   setUser(data) {
