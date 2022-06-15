@@ -19,7 +19,7 @@ export function InfoPage({ _id, description, genres }: { _id: string; descriptio
       <Description>{description || ''}</Description>
       <TagsWrap>
         {genres?.map((genre) => (
-          <Tag to="/">{genre?.title}</Tag>
+          <Tag to={'/catalog?genres=' + genre._id}>{genre?.title}</Tag>
         ))}
       </TagsWrap>
       <MangaTiles caption="Similar" manga={similar}></MangaTiles>

@@ -18,6 +18,7 @@ export const HeaderWrap = styled.div`
   margin: 0px;
   padding: 0px;
   border: 0px;
+  z-index: 100;
 `;
 
 export const HeaderInput = styled.input`
