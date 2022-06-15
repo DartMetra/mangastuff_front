@@ -1,9 +1,12 @@
 import $api from './index';
 import { API_URL } from './index';
 
-export async function getMangaList(pag: { limit?: number; skip?: number; order?: 1 | -1; sortBy?: string }) {
+export async function getMangaList(
+  pag: { limit?: number; skip?: number; order?: 1 | -1; sortBy?: string },
+  query?: { search?: string; genres?: string[]; author?: string; year_start?: number; year_end?: number }
+) {
   return await $api.get('api/manga', {
-    params: pag,
+    params: { ...pag, ...query },
   });
 }
 

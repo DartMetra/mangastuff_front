@@ -32,13 +32,14 @@ export function MangaDetailedPage() {
 
   useEffect(() => {
     setLoading(true);
+    console.log(param.id);
     getMangaInfo(param.id as string).then((res) => {
       console.log(res.data);
       console.log(res.data._id);
       setManga(res.data);
       setLoading(false);
     });
-  }, []);
+  }, [param]);
 
   return (
     <>
@@ -53,7 +54,6 @@ export function MangaDetailedPage() {
               <MangaSidebarPreview preview={'http://localhost:4000/public/manga/preview/' + manga?.preview}></MangaSidebarPreview>
               <MangaReadButton to={'/manga/' + param.id + '/chapter/c0'}>Read From First Chapter</MangaReadButton>
               <SidebarInfo>
-                <InfoItem value="2000" caption="Year"></InfoItem>
                 <InfoItem caption="Year" value={manga?.year}></InfoItem>
                 <InfoItem caption="Author" value={manga?.author}></InfoItem>
                 <InfoItem caption="Artist" value={manga?.artist}></InfoItem>

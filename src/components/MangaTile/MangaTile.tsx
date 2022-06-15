@@ -4,6 +4,7 @@ import { Div, TileCaption, TileContainer, TileImage, ImageText } from './style';
 
 export function MangaTile({ chapter, vol, title, preview, _id }: { chapter?; vol?; title: string; preview: string; _id: string }) {
   console.log(preview);
+
   return (
     <TileContainer>
       <Link to={chapter && vol ? `/manga/${_id}/chapter/c${chapter}` : `/manga/${_id}`}>

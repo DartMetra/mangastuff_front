@@ -19,6 +19,8 @@ function ReaderPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    setIndex(0);
+    setChapter({});
     setLoading(true);
     getMangaInfo(param.id as string).then((res) => {
       setManga(res.data);
@@ -30,12 +32,12 @@ function ReaderPage() {
         setLoading(false);
       });
     });
-  }, []);
+  }, [param]);
 
   function nextPage() {
     if (index + 1 >= chapter?.pages?.length) {
       navigate('/manga/' + param.id + '/chapter/c' + (+(param.chapter as string) + 1), { state: { index: 0 } });
-      location.reload();
+      //location.reload();
     } else {
       setIndex(index + 1);
     }
@@ -47,7 +49,7 @@ function ReaderPage() {
         navigate('/manga/' + param.id);
       } else {
         navigate('/manga/' + param.id + '/chapter/c' + (+chapter?.chapter - 1));
-        location.reload();
+        //location.reload();
       }
     } else {
       setIndex(index - 1);
