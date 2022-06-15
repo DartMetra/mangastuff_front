@@ -19,7 +19,11 @@ export async function getMangaSimilar(id: string) {
 }
 
 export async function createManga(body) {
-  return await $api.post('api/manga', body);
+  return await $api.post('api/manga', body, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  });
 }
 
 export async function updateManga(id: string, body) {
