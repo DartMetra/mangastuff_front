@@ -9,6 +9,7 @@ import ReaderPage from './views/Reader/Reader';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import { Catalog } from './views/Catalog/Catalog';
 import { CreateManga } from './views/CreateManga/CreateManga';
+import { CreateChapter } from './views/CreateChapter/CreateChapter';
 
 function App() {
   const { store } = useContext(Context);
@@ -22,6 +23,7 @@ function App() {
         <Route path="/catalog" element={<Catalog></Catalog>}></Route>
         <Route path="/manga/create" element={<CreateManga></CreateManga>}></Route>
         <Route path="/manga/:id" element={<MangaDetailedPage></MangaDetailedPage>}></Route>
+        <Route path="/manga/:id/chapter/create" element={<CreateChapter></CreateChapter>}></Route>
         <Route path="/manga/:id/chapter/c:chapter" element={<ReaderPage></ReaderPage>}></Route>
       </Routes>
     </>

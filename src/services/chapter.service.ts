@@ -13,3 +13,11 @@ export async function getChapters(pag: { limit?: number; skip?: number; order?: 
     params: pag,
   });
 }
+
+export async function createChapter(body) {
+  return await $api.post('api/chapter', body, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  });
+}

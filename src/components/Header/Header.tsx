@@ -10,7 +10,7 @@ export function Header() {
     <HeaderWrap>
       <HeaderLink to="/">MangaStuff</HeaderLink>
       <div>
-        <HeaderInput type="text" placeholder="Search" />
+        <HeaderInput type="text" onClick={() => navigate('/catalog')} placeholder="Search" />
       </div>
       <HeaderAuthContainer>
         {store?.isAuth ? (
