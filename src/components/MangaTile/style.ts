@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { colors } from '..';
 
 export const TileContainer = styled.div`
   padding: 5px;
@@ -17,7 +18,7 @@ export const ImageText = styled.div`
   font-size: 300;
   padding: 5px;
   box-sizing: border-box;
-  color: white;
+
   text-decoration: none;
   position: absolute;
   bottom: 0;
@@ -46,7 +47,7 @@ export const TileCaption = styled(Link)`
   font-family: 'Roboto', sans-serif;
   font-size: 300;
   text-decoration: none;
-  color: #34282c;
+  color: ${colors.textPrimary};
 
   max-width: 121px;
   display: -webkit-box;

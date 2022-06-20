@@ -1,16 +1,37 @@
 import styled from 'styled-components';
+import { colors } from '../../components';
+
+export const Wrapper = styled.div`
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  background-color: ${colors.bgBlack};
+  justify-content: center;
+  align-items: center;
+`;
+
+export const SForm = styled.form`
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+`;
 
 export const AuthContainer = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   flex-direction: column;
   align-items: center;
-  background-color: #282c34;
+  background-color: ${colors.bgBlack1};
+  border-radius: 4px;
+  height: 40vh;
+  width: 40vh;
 `;
 
 export const AuthInput = styled.input`
   outline: none;
   margin: 10px;
+  color: ${colors.textBlack};
 `;
 
 export const AuthGoogle = styled.button`

@@ -1,4 +1,4 @@
-import { GlobalStyle, HeaderLink, HeaderWrap, Next, Page, Prev, ReaderContainer, SizeBtn } from './style';
+import { HeaderLink, HeaderWrap, Next, Page, Prev, ReaderContainer } from './style';
 import { useState, useEffect, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getMangaInfo } from '../../services/manga.service';
@@ -78,16 +78,18 @@ function ReaderPage() {
         <Loader></Loader>
       ) : (
         <>
-          <GlobalStyle></GlobalStyle>
           <HeaderWrap>
             <HeaderLink to={'/manga/' + manga?._id}>{manga?.title}</HeaderLink>
             <HeaderLink to="#">{`Page ${index + 1}/${chapter?.pages?.length}`}</HeaderLink>
-            <SizeBtn onClick={incrSize}>+</SizeBtn>
-            <SizeBtn onClick={decrSize}>-</SizeBtn>
           </HeaderWrap>
           <ReaderContainer>
-            {chapter?.pages && chapter.pages[0] ? <Page size={size} src={API_URL + 'public/page/' + chapter?.pages[index]} alt="page" /> : ''}
-            <Prev tabIndex={0} onClick={prevPage}></Prev> <Next tabIndex={0} onKeyDown={onKeyDown} onClick={nextPage}></Next>
+            {chapter?.pages && chapter.pages[0] ? (
+              <Page src={API_URL + 'public/page/' + chapter?.pages[index]} alt="page" />
+            ) : (
+              ''
+            )}
+            <Prev tabIndex={0} onClick={prevPage}></Prev>{' '}
+            <Next tabIndex={0} onKeyDown={onKeyDown} onClick={nextPage}></Next>
           </ReaderContainer>
         </>
       )}

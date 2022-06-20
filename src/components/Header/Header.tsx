@@ -1,4 +1,12 @@
-import { HeaderWrap, HeaderInput, HeaderAuthContainer, HeaderLabel, HeaderLink, HeaderProfile } from './style';
+import {
+  HeaderWrap,
+  HeaderInput,
+  HeaderAuthContainer,
+  HeaderLabel,
+  HeaderLink,
+  HeaderProfile,
+  LogoutBtn,
+} from './style';
 import { useContext, useState } from 'react';
 import { Context } from '../..';
 import { useNavigate } from 'react-router-dom';
@@ -14,17 +22,22 @@ export function Header() {
       </div>
       <HeaderAuthContainer>
         {store?.isAuth ? (
-          <HeaderProfile>
-            <img width={36} height={36} src={store.user.picture} alt="" />
-            <button
+          <>
+            <HeaderProfile>
+              <HeaderLink to="/profile">
+                {' '}
+                <img width={36} height={36} src={store.user.picture} alt="" />
+              </HeaderLink>
+            </HeaderProfile>
+            <LogoutBtn
               onClick={async () => {
                 await store?.logout();
                 navigate('/login');
               }}
             >
-              LOGOUT
-            </button>
-          </HeaderProfile>
+              <img width={20} height={25} src="img/exit.png" alt="" />
+            </LogoutBtn>
+          </>
         ) : (
           <>
             <HeaderLink to="/login">Login</HeaderLink>

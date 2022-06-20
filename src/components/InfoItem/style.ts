@@ -9,11 +9,9 @@ export const InfoWrap = styled.div`
 `;
 
 export const InfoKey = styled.span`
-  color: blue;
   font-size: smaller;
 `;
 
 export const InfoValue = styled.span`
   margin-left: 5px;
-  font-style: black;
 `;

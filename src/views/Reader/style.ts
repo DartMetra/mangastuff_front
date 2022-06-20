@@ -1,16 +1,10 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { createGlobalStyle } from 'styled-components';
+import { colors, text } from '../../components/index';
 
 export const HeaderLink = styled(Link)`
   text-decoration: none;
-  color: white;
-`;
-
-export const GlobalStyle = createGlobalStyle`
-  body {
-    background-color:#141414;
-  }
 `;
 
 export const HeaderWrap = styled.div`
@@ -18,7 +12,7 @@ export const HeaderWrap = styled.div`
   justify-content: space-evenly;
   align-items: center;
   height: 50px;
-  background-color: #1c1c1e;
+  background-color: ${colors.bgBlack1};
   top: 0;
   width: 100%;
   margin: 0px;
@@ -31,12 +25,10 @@ export const ReaderContainer = styled.div`
   justify-content: center;
   width: 100%;
   min-height: 100vh;
-  // background-color: aqua;
   box-sizing: border-box;
 `;
 
 export const Page = styled.img`
-  //width: ${(props: { size?: number }) => (props.size ? props.size : 60)}%;
   max-width: 100%;
 `;
 

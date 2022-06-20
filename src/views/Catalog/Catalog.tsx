@@ -6,7 +6,17 @@ import { Header } from '../../components/Header/Header';
 import { getAuthorList } from '../../services/author.service';
 import { getGenreList } from '../../services/genre.service';
 import { getMangaList } from '../../services/manga.service';
-import { Container, GenresWrap, SearchWrap, SInput, GenreWrap } from './style';
+import {
+  Container,
+  GenresWrap,
+  SearchWrap,
+  SInput,
+  GenreWrap,
+  SearchCaption,
+  SearchBtn,
+  SOption,
+  SSelect,
+} from './style';
 
 export function Catalog() {
   const param = useParams();
@@ -88,9 +98,9 @@ export function Catalog() {
           ))}
         </BigTilesWrap>
         <SearchWrap>
-          <span>Пошук за назвою</span>
+          <SearchCaption>Пошук за назвою</SearchCaption>
           <SInput placeholder="Пошук за назвою" onChange={(e) => setSearch(e.target.value)} value={search}></SInput>
-          <span>Рік</span>
+          <SearchCaption>Рік</SearchCaption>
           <SInput
             type="number"
             min="1900"
@@ -107,15 +117,15 @@ export function Catalog() {
             onChange={(e) => setYearEnd(e.target.value)}
             value={yearEnd}
           ></SInput>
-          <span>Автор</span>
-          <select onChange={(e) => setAuthor(e.target.value)}>
-            <option value=""> </option>
+          <SearchCaption>Автор</SearchCaption>
+          <SSelect onChange={(e) => setAuthor(e.target.value)}>
+            <SOption value=""> </SOption>
             {authorList.map((e) => (
-              <option value={e._id}>{e.title}</option>
+              <SOption value={e._id}>{e.title}</SOption>
             ))}
-          </select>
+          </SSelect>
           <GenresWrap>
-            <span>Жанри</span>{' '}
+            <SearchCaption>Жанри</SearchCaption>{' '}
             {genreList.map((e) => (
               <GenreWrap>
                 <SInput key={e._id} id={e._id} type="checkbox" value={e._id} onChange={() => pushGenre(e._id)}></SInput>
@@ -123,7 +133,7 @@ export function Catalog() {
               </GenreWrap>
             ))}
           </GenresWrap>
-          <button onClick={searchFunc}>Пошук</button>
+          <SearchBtn onClick={searchFunc}>Пошук</SearchBtn>
         </SearchWrap>
       </Container>
     </>

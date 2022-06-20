@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Tabs, TabList, Tab, TabPanel } from 'react-tabs';
 import { Link } from 'react-router-dom';
+import { colors } from '../../components';
 
 export const Banner = styled.div`
   background-image: url(${(props: { banner: string }) => props.banner});
@@ -47,14 +48,36 @@ export const MangaReadButton = styled(Link)`
   align-items: center;
   justify-content: center;
   border-radius: 4px;
-  background-color: wheat;
+  background-color: ${colors.bgBlack1};
   margin-bottom: 15px;
-  color: white;
+  &:hover {
+    background-color: ${colors.bgGrey};
+  }
+`;
+export const MangaButton = styled.button`
+  width: 250px;
+  height: 32px;
+  display: flex;
+  text-decoration: none;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  background-color: ${colors.bgBlack1};
+  margin-bottom: 15px;
+  outline: none;
+  border: none;
+  &:focus {
+    outline: none;
+  }
+  &:hover {
+    background-color: ${colors.bgGrey};
+    outline: none;
+  }
 `;
 
 export const SidebarInfo = styled.div`
   border-radius: 4px;
-  background-color: aquamarine;
+  background-color: ${colors.bgBlack1};
   padding: 10px;
 `;
 
@@ -70,17 +93,15 @@ export const MangaTitle = styled.div`
   margin-bottom: 15px;
 `;
 export const MainTitle = styled.span`
-  color: aliceblue;
   font-size: 25px;
   margin-bottom: 4px;
-  font-family: 'Roboto', sans-serif;
+
   text-decoration: none;
 `;
 
 export const SubTitle = styled.span`
-  color: aliceblue;
   font-size: 18px;
-  font-family: 'Roboto', sans-serif;
+
   text-decoration: none;
 `;
 
@@ -104,7 +125,7 @@ export const STabList = styled(TabList)`
   justify-content: space-evenly;
   margin: 0;
   border-radius: 4px;
-  background-color: white;
+  background-color: ${colors.bgBlack1};
   margin-bottom: 15px;
 `;
 //STabList.tabsRole = 'TabList';
@@ -116,8 +137,6 @@ export const STab = styled(Tab)`
   cursor: pointer;
 
   &.is-selected {
-    // color: white;
-    // background: black;
     background-color: grey;
   }
 
@@ -132,7 +151,7 @@ export const STabPanel = styled(TabPanel)`
   min-height: 80vh;
   padding: 4px;
   border-radius: 4px;
-  background-color: wheat;
+  background-color: ${colors.bgBlack1};
   font-family: 'Roboto', sans-serif;
   &.is-selected {
     display: block;

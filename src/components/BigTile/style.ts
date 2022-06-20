@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { colors } from '..';
 
 export const TileContainer = styled.div`
   padding: 5px;
@@ -18,7 +19,6 @@ export const ImageText = styled.div`
   font-size: 300;
   padding: 5px;
   box-sizing: border-box;
-  color: white;
   text-decoration: none !important;
 
   position: relative;
@@ -35,7 +35,8 @@ export const TileImage = styled.div`
   background-image: url(${(props: { preview: string }) => props.preview});
   background-color: transparent;
   cursor: pointer;
-  filter: brightness(0.8);
+  filter: brightness(0.9);
+  color: ${colors.textPrimary1};
   border-radius: 4px;
   height: 176px;
   width: 121px;
@@ -52,6 +53,7 @@ export const BigTilesWrap = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   padding: 4px 5px;
-  background-color: wheat;
+  background-color: ${colors.bgBlack1};
   min-width: 70%;
+  border-radius: 4px;
 `;

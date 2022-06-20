@@ -3,6 +3,7 @@ import axios from 'axios';
 import { API_URL } from '../services';
 
 import { getToken, getUser, googleLogin, loginEmail, registerEmail } from '../services/firebase.service';
+import { updateMe } from '../services/user.service';
 
 export default class Store {
   isAuth = false;
@@ -55,6 +56,7 @@ export default class Store {
       this.setUser(await getUser());
       console.log('USERAUTH', this.user, this.isAuth);
       this.save();
+      await updateMe();
     } catch (e: any) {
       console.log('GOOGLE ERROR');
       console.log(e);
@@ -71,6 +73,7 @@ export default class Store {
       this.setAuth(true);
       this.setUser(await getUser());
       this.save();
+      await updateMe();
     } catch (e: any) {
       console.log(e);
     }
@@ -86,6 +89,7 @@ export default class Store {
       this.setAuth(true);
       this.setUser(await getUser());
       this.save();
+      await updateMe();
     } catch (e: any) {
       console.log(e);
     }

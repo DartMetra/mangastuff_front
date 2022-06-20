@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { colors } from '../../../components';
 
 export const Description = styled.div`
   margin: 18px;
@@ -15,15 +16,15 @@ export const TagsWrap = styled.div`
 export const Tag = styled(Link)`
   display: block;
   padding: 5px 10px;
-  background-color: whitesmoke;
+  background-color: hsla(240, 5%, 48%, 0.1);
   border-radius: 4px;
   margin: 8px 8px 0 0;
-  border: 1px solid #e5e5e5;
+  border: 1px solid ${colors.border};
   text-decoration: none;
-  color: rgba(60, 60, 67, 0.6);
+  color: rgba(235, 235, 245, 0.6);
 
   &:hover {
-    background-color: hsla(240, 4%, 48%, 0.12);
-    color: #212529;
+    background-color: ${colors.bgGrey};
+    color: ${colors.textPrimary};
   }
 `;

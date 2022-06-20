@@ -17,6 +17,5 @@ export const TilesContainer = styled.div`
 
 export const TilesCaption = styled.h2`
   font-size: 20px;
-  font-family: 'Roboto', sans-serif;
   margin: 10px 0px 3px 20px;
 `;
