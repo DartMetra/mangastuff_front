@@ -46,12 +46,13 @@ export const TileImage = styled.div`
   transition: filter 0.2s linear;
 `;
 export const BigTilesWrap = styled.div`
+  align-content: flex-start;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   padding: 4px 5px;
   background-color: ${colors.bgBlack1};
   min-width: 70%;

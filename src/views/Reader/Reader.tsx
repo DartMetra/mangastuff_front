@@ -64,14 +64,6 @@ function ReaderPage() {
     }
   }
 
-  function incrSize() {
-    setSize(size == 200 ? size : size + 5);
-  }
-
-  function decrSize() {
-    setSize(size == 40 ? size : size - 5);
-  }
-
   return (
     <>
       {loading ? (

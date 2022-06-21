@@ -2,7 +2,7 @@ import { Dispatch, SetStateAction, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Header } from '../../components/Header/Header';
 import { createChapter } from '../../services/chapter.service';
-import { FormInput, FormWrap } from '../CreateManga/style';
+import { Btn, Container, FormInput, FormWrap } from '../CreateManga/style';
 
 export function CreateChapter() {
   const param = useParams();
@@ -35,23 +35,25 @@ export function CreateChapter() {
   return (
     <>
       <Header></Header>
-      <FormWrap>
-        Том:
-        <FormInput type="number" min={0} onChange={(e) => setVolume(e.target.value)} value={volume} required />
-        Розділ:
-        <FormInput type="number" min={0} onChange={(e) => setChapter(e.target.value)} value={chapter} required />
-        Сторінки:
-        <FormInput
-          type="file"
-          onChange={(
-            e
-            //ts-ignore
-          ) => setPages(e.target.files as any)}
-          multiple
-          required
-        />
-        <button onClick={submit}>Створити</button>
-      </FormWrap>
+      <Container>
+        <FormWrap>
+          Том:
+          <FormInput type="number" min={0} onChange={(e) => setVolume(e.target.value)} value={volume} required />
+          Розділ:
+          <FormInput type="number" min={0} onChange={(e) => setChapter(e.target.value)} value={chapter} required />
+          Сторінки:
+          <FormInput
+            type="file"
+            onChange={(
+              e
+              //ts-ignore
+            ) => setPages(e.target.files as any)}
+            multiple
+            required
+          />
+          <Btn onClick={submit}>Створити</Btn>
+        </FormWrap>
+      </Container>
     </>
   );
 }

@@ -1,10 +1,11 @@
 import { Header } from '../../components/Header/Header';
-import { FormInput, FormWrap } from './style';
+import { Btn, Container, FormInput, FormTextAr, FormWrap } from './style';
 import { useState, useEffect } from 'react';
 import { getGenreList } from '../../services/genre.service';
 import { getAuthorList } from '../../services/author.service';
 import { createManga } from '../../services/manga.service';
 import { Navigate, useNavigate } from 'react-router-dom';
+import { SOption, SSelect } from '../Catalog/style';
 
 export function CreateManga() {
   const navigate = useNavigate();
@@ -49,69 +50,85 @@ export function CreateManga() {
   return (
     <>
       <Header></Header>
-      <FormWrap>
-        Preview:
-        <FormInput
-          type="file"
-          onChange={(
-            e //@ts-ignore
-          ) => setPreview(e?.target?.files[0])}
-          required
-        />
-        Banner:{' '}
-        <FormInput
-          type="file"
-          onChange={(
-            e //@ts-ignore
-          ) => setBanner(e?.target?.files[0])}
-          required
-        />
-        Title:
-        <FormInput type="text" onChange={(e) => setTitle(e.target.value)} value={title} required />
-        OriginalTitle:
-        <FormInput type="text" onChange={(e) => setOriginalTitle(e.target.value)} value={originalTitle} required />
-        Description: <textarea onChange={(e) => setDescription(e.target.value)} value={description} required cols={10} rows={2}></textarea>
-        Author:{' '}
-        <select
-          onChange={(e) => {
-            let options = e.target.options;
-            let value: any[] = [];
-            for (var i = 0, l = options.length; i < l; i++) {
-              if (options[i].selected) {
-                value.push(options[i].value);
+      <Container>
+        <FormWrap>
+          Preview:
+          <FormInput
+            type="file"
+            onChange={(
+              e //@ts-ignore
+            ) => setPreview(e?.target?.files[0])}
+            required
+          />
+          Banner:{' '}
+          <FormInput
+            type="file"
+            onChange={(
+              e //@ts-ignore
+            ) => setBanner(e?.target?.files[0])}
+            required
+          />
+          Title:
+          <FormInput type="text" onChange={(e) => setTitle(e.target.value)} value={title} required />
+          OriginalTitle:
+          <FormInput type="text" onChange={(e) => setOriginalTitle(e.target.value)} value={originalTitle} required />
+          Description:{' '}
+          <FormTextAr
+            onChange={(e) => setDescription(e.target.value)}
+            value={description}
+            required
+            cols={10}
+            rows={2}
+          ></FormTextAr>
+          Author:{' '}
+          <SSelect
+            onChange={(e) => {
+              let options = e.target.options;
+              let value: any[] = [];
+              for (var i = 0, l = options.length; i < l; i++) {
+                if (options[i].selected) {
+                  value.push(options[i].value);
+                }
               }
-            }
-            setAuthors(value);
-          }}
-          required
-        >
-          {authorsList.map((e) => (
-            <option value={e._id}>{e.title}</option>
-          ))}
-        </select>
-        Genres:{' '}
-        <select
-          onChange={(e) => {
-            let options = e.target.options;
-            let value: any[] = [];
-            for (var i = 0, l = options.length; i < l; i++) {
-              if (options[i].selected) {
-                value.push(options[i].value);
+              setAuthors(value);
+            }}
+            required
+          >
+            {authorsList.map((e) => (
+              <SOption value={e._id}>{e.title}</SOption>
+            ))}
+          </SSelect>
+          Genres:{' '}
+          <SSelect
+            onChange={(e) => {
+              let options = e.target.options;
+              let value: any[] = [];
+              for (var i = 0, l = options.length; i < l; i++) {
+                if (options[i].selected) {
+                  value.push(options[i].value);
+                }
               }
-            }
-            setGenres(value);
-          }}
-          multiple
-          size={7}
-          required
-        >
-          {genresList.map((e) => (
-            <option value={e._id}>{e.title}</option>
-          ))}
-        </select>
-        Year: <FormInput required onChange={(e) => setYear(e.target.value)} type="number" min="1900" max={new Date().getFullYear()} />
-        <button onClick={submit}>Створити</button>
-      </FormWrap>
+              setGenres(value);
+            }}
+            multiple
+            size={7}
+            required
+          >
+            {genresList.map((e) => (
+              <SOption value={e._id}>{e.title}</SOption>
+            ))}
+          </SSelect>
+          Year:{' '}
+          <FormInput
+            required
+            onChange={(e) => setYear(e.target.value)}
+            type="number"
+            min="1900"
+            max={new Date().getFullYear()}
+          />
+          <Btn onClick={submit}>Створити</Btn>
+        </FormWrap>
+      </Container>
     </>
   );
 }

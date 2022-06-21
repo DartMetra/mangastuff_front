@@ -2,6 +2,9 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { colors } from '..';
 
+export const HeaderLogo = styled(Link)`
+  text-decoration: none;
+`;
 export const HeaderLink = styled(Link)`
   text-decoration: none;
 `;

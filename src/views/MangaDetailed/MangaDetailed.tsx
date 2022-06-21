@@ -21,7 +21,7 @@ import { InfoItem } from '../../components/InfoItem/InfoItem';
 import 'react-tabs/style/react-tabs.css';
 import { InfoPage } from './InfoPage/InfoPage';
 import { ChapterPage } from './ChaptersPage/ChapterPage';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getMangaInfo } from '../../services/manga.service';
 import { Loader } from '../../components/Loader/Loader';
@@ -32,6 +32,8 @@ export function MangaDetailedPage() {
   const [manga, setManga]: any = useState({});
   const [favorite, setFavorite]: any = useState(false);
   const [loading, setLoading]: any[] = useState(true);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     setLoading(true);
@@ -70,6 +72,8 @@ export function MangaDetailedPage() {
               ) : (
                 <></>
               )}
+              <MangaButton onClick={() => navigate('chapter/create')}>Додати розділ</MangaButton>
+
               <SidebarInfo>
                 <InfoItem caption="Year" value={manga?.year}></InfoItem>
                 <InfoItem caption="Author" value={manga?.author}></InfoItem>

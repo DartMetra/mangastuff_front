@@ -6,6 +6,7 @@ import {
   HeaderLink,
   HeaderProfile,
   LogoutBtn,
+  HeaderLogo,
 } from './style';
 import { useContext, useState } from 'react';
 import { Context } from '../..';
@@ -16,10 +17,11 @@ export function Header() {
   const navigate = useNavigate();
   return (
     <HeaderWrap>
-      <HeaderLink to="/">MangaStuff</HeaderLink>
+      <HeaderLogo to="/">MangaStuff</HeaderLogo>
       <div>
         <HeaderInput type="text" onClick={() => navigate('/catalog')} placeholder="Search" />
       </div>
+      <HeaderLink to="/manga/create">Додати мангу</HeaderLink>
       <HeaderAuthContainer>
         {store?.isAuth ? (
           <>
@@ -35,7 +37,7 @@ export function Header() {
                 navigate('/login');
               }}
             >
-              <img width={20} height={25} src="img/exit.png" alt="" />
+              <img width={20} height={25} src="http://localhost:3000/img/exit.png" alt="" />
             </LogoutBtn>
           </>
         ) : (
